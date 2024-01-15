@@ -18,7 +18,7 @@ const guessNumberField = document.querySelector('.guess')
 
 // inicializar la aplicación
 initApp()
-
+console.log(highScore)
 // funcionalidad de la aplicación
 
 // addEventListener es una función que recibe
@@ -43,6 +43,7 @@ checkButton.addEventListener('click', () => {
     // cambiar fondo de pantalla
     document.body.style.backgroundColor = 'green'
     checkButton.disabled = true
+
     // mostrar el mensaje
     messageField.textContent = '¡Has acertado!'
     // mostrar el número secreto
@@ -54,6 +55,8 @@ checkButton.addEventListener('click', () => {
     if (score > highScore) {
       highScore = score
       highScoreField.textContent = highScore
+      localStorage.setItem('highScore',highScore)
+      console.log(localStorage.getItem('highScore'))
     }
   }
 })
@@ -66,7 +69,7 @@ function initApp() {
 
   // TODO: inicializar highScore
   // habría que leer de algún almacenamiento: cookies, sessionStorage, localStorage
-
+  highScore=localStorage.getItem('highScore')
   // highScoreField.textContent = highScore
 
   // inicializar el texto de inicio
